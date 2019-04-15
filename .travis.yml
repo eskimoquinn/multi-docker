@@ -13,3 +13,8 @@ after_success:
   - docker build -t eskimoquinn/multi-nginx ./nginx
   - docker build -t eskimoquinn/multi-server ./server
   - docker build -t eskimoquinn/multi-worker ./worker
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  - docker push eskimoquinn/multi-client
+  - docker push eskimoquinn/multi-nginx
+  - docker push eskimoquinn/multi-server
+  - docker push eskimoquinn/multi-worker
